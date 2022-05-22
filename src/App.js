@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import kanyeLogo from "./images/kanyeIcon.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 function App() {
   const [quote, setQuote] = useState("");
@@ -59,6 +59,7 @@ function App() {
           Weather
         </NavLink>
       </nav>
+      <Outlet />
     </div>
   );
 }
