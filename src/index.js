@@ -4,13 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./pages/About";
+import Weather from "./pages/Weather";
+import Resume from "./pages/Resume";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<App />}>
+          <Route path="/About" elemenet={<About />}></Route>
+          <Route path="/Resume" element={<Resume />}></Route>
+          <Route path="/Weather" element={<Weather />}></Route>
+        </Route>
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
