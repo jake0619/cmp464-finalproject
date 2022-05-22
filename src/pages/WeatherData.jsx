@@ -7,6 +7,7 @@ export default function WeatherData(){
   const [city ,setCity] = useState("");
   const [region, setRegion] = useState("");
   const [feelsLike ,setfeelsLike] = useState("");
+  const [weatherText ,setWeatherText] = useState("");
   const [temp ,setTemp] = useState("");
   const [wind ,setWind] = useState("");
   const [img, setImg] = useState("");
@@ -20,14 +21,15 @@ export default function WeatherData(){
     let response = await fetch("https://api.weatherapi.com/v1/current.json?key="+api_key+"&q="+zipcode+"&aqi=no")
     let result = await response.json();
     let {location: {name: city, region, localtime}, current} = result;
-    let {condition, temp_f, wind_mph, } = current
-    let {text: feelsLike, icon} = condition
+    let {condition, temp_f, wind_mph, feelslike_f} = current
+    let {text, icon} = condition
     setCity(city);
     setRegion(region);
     setTime(localtime);
     setTemp(temp_f)
     setWind(wind_mph)
-    setfeelsLike(feelsLike)
+    setWeatherText(text)
+    setfeelsLike(feelslike_f)
     setImg(icon)
     setWeatherLoaded(true);
   }
@@ -45,8 +47,9 @@ export default function WeatherData(){
         <h1 style={{marginBottom: 0}}>{city}, {region}</h1>
         <h5 style={{marginTop: 0}}>{time}</h5>
         <img src={img}></img>
-        <h3>{feelsLike}</h3>
+        <h3>{weatherText}</h3>
         <h3>Temperature: {temp}ºF</h3>
+        <h3>Feels Like: {feelsLike}ºF</h3>
         <h3>Wind: {wind} MPH</h3>
       </div>
       }
