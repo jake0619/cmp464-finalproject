@@ -1,23 +1,26 @@
 import {useState} from 'react'
 import WeatherData from './WeatherData';
+import config from '../config';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export default function Weather(){
   const[zipCode, setZipCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmitZip = (event) =>{
     event.preventDefault();
-    let zipcode = event.target[0].value;
-    console.log(event);
-    console.log("checking if valid zip code: "+event.target.value);
-    if(isValidZipcode(zipcode)){
-      setZipCode(zipCode);
-      
+    let zipcodeInput = event.target[0].value;
+    //console.log("checking if valid zip code: "+zipcodeInput);
+    if(isValidZipcode(zipcodeInput)){
+      setZipCode(zipcodeInput);
+      console.log(config.api.zipcode);
       setErrorMessage("");
+      navigate(`/Weather/${zipcodeInput}`)
     }
     else{
       console.error("Please input a valid 5 digit US zipcode");
-      setErrorMessage("Not a valid 5 digit US zipcode: "+zipcode);
+      setErrorMessage("Not a valid 5 digit US zipcode: "+zipcodeInput);
     }
     
   }
@@ -38,7 +41,7 @@ export default function Weather(){
         <input type="text" placeholder='zipcode'></input>
         <input type="submit"></input>
       </form>
-      <WeatherData/>
+      <Outlet/>
     </div>
   )
 }

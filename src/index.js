@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Weather from "./pages/Weather";
 import Resume from "./pages/Resume";
+import WeatherData from "./pages/WeatherData";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,9 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="/About" element={<About />}></Route>
           <Route path="/Resume" element={<Resume />}></Route>
-          <Route path="/Weather" element={<Weather />}></Route>
+          <Route path="/Weather" element={<Weather />}>
+            <Route path=":zipCode" element={<WeatherData />} />
+          </Route>
         </Route>
       </Routes>
     </React.StrictMode>

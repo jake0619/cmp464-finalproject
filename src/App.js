@@ -27,6 +27,9 @@ function App() {
         src={kanyeLogo}
         onClick={() => getQuote()}
       />
+      <h6 style={{ margin: 0, fontSize: 9 }}>
+        click kanye to generate a new quote!
+      </h6>
       <nav className="navBar">
         <NavLink
           style={({ isActive }) => {
