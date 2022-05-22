@@ -37,6 +37,16 @@ function App() {
               color: isActive ? "red" : "",
             };
           }}
+          to={`/`}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "red" : "",
+            };
+          }}
           to={`/About`}
         >
           About
