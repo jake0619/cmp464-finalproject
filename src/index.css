@@ -54,6 +54,19 @@ code {
   margin: 2%;
 }
 
+.weatherDetailContainer {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.weatherDetailContainer > div {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
 
 
 
